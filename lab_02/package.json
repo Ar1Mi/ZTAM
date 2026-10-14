@@ -1,0 +1,14 @@
+{
+  "name": "lab_02",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lab 2 - powiadomienia i Web Push",
+  "type": "module",
+  "scripts": {
+    "keys": "node generate-keys.mjs",
+    "push": "node send-push.mjs"
+  },
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}

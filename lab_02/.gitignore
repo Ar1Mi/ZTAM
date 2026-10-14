@@ -1,0 +1,5 @@
+node_modules/
+vapid-keys.json
+subscription.json
+.DS_Store
+lab2.pdf
