@@ -24,4 +24,8 @@ node send-push.mjs "Nowa wiadomość" "Pozdrowienia z serwera!"
 
 ## Powiadomienie push na telefonie
 
-<!-- TODO: zrzut ekranu powiadomienia push na telefonie -->
+Test na iPhonie: aplikacja dodana do ekranu początkowego (Safari → Udostępnij → Do ekranu początkowego), powiadomienie wysłane poleceniem `node send-push.mjs "Nowa wiadomość" "Pozdrowienia z serwera!"` przy zamkniętej aplikacji (status `201`).
+
+| Powiadomienie push | Zgoda na powiadomienia | Subskrypcja | Zainstalowana aplikacja |
+| --- | --- | --- | --- |
+| <img src="screenshot-push.png" width="200" alt="Powiadomienie push na ekranie głównym iPhone'a"> | <img src="screenshot-permission.png" width="200" alt="Prośba o zgodę na powiadomienia"> | <img src="screenshot-subscription.png" width="200" alt="Skopiowana subskrypcja push"> | <img src="screenshot-home.png" width="200" alt="Ikona aplikacji na ekranie głównym"> |
