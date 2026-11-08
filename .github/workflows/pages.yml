@@ -1,0 +1,69 @@
+name: GitHub Pages
+
+# Buduje aplikacje Vite (lab_03, lab_04) i publikuje je razem
+# ze statycznymi laboratoriami (lab_01, lab_02) na GitHub Pages.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Build lab_03 (Weather App, PWA)
+        working-directory: lab_03
+        env:
+          BASE_PATH: /ZTAM/lab_03/
+        run: |
+          npm ci
+          npm run build
+
+      - name: Test i build lab_04 (Ionic React)
+        working-directory: lab_04
+        env:
+          BASE_PATH: /ZTAM/lab_04/
+        run: |
+          npm ci
+          npm run lint
+          npm run test:unit
+          npm run build
+
+      - name: Złożenie strony
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'node_modules' ./ _site/
+          rm -rf _site/lab_03 _site/lab_04
+          cp -r lab_03/dist _site/lab_03
+          cp -r lab_04/dist _site/lab_04
+          touch _site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
