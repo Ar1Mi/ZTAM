@@ -1,0 +1,54 @@
+.kalkulator {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kalkulator .wyswietlacz {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--ion-color-step-50, rgba(0, 0, 0, 0.05));
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.kalkulator .wyrazenie {
+  min-height: 1.2em;
+  font-size: 0.95rem;
+  color: var(--ion-color-medium);
+}
+
+.kalkulator .wyswietlacz h1 {
+  margin: 4px 0 0;
+  font-size: 2.6rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ion-text-color, #000);
+}
+
+.kalkulator .wyswietlacz h1.blad {
+  font-size: 1.3rem;
+  line-height: 2.6rem;
+  color: var(--ion-color-danger);
+}
+
+.kalkulator .przyciski {
+  padding: 8px 0 0;
+}
+
+.kalkulator .przyciski ion-col {
+  padding: 3px;
+}
+
+.kalkulator .przyciski ion-button {
+  margin: 0;
+  height: 52px;
+  font-size: 1.3rem;
+  text-transform: none;
+}
+
+/* wybrane działanie (jak podświetlenie w kalkulatorze Windows) */
+.kalkulator .przyciski ion-button.aktywne {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+}
